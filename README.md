@@ -21,5 +21,11 @@ npm run build --report
 # Install vuetify
 npm install vuetify --save
 
+# install axios for API Calls
+npm install axios --save
+
+# install vue-gallary
+npm install vue-gallery --save
+
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
