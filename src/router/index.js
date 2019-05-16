@@ -6,17 +6,13 @@ import PhotoGallary from '@/components/Gallary/PhotoGallary'
 import Search from '@/components/Search/Search'
 import StoriesList from '@/components/Stories/StoriesList'
 import Contact from '@/components/Contact/Index'
+import Login from '@/components/Login/Login'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
     {
       path: '/dashboard',
       name: 'Dashboard',
@@ -41,6 +37,14 @@ export default new Router({
       path: '/contact-us',
       name: 'Contact',
       component: Contact
+    },
+    {
+      path: '/',
+      name: 'Login',
+      component: Login,
+      meta: {
+        allowAnonymous: true
+      }
     }
   ]
 })

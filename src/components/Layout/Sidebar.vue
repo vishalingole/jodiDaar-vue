@@ -5,11 +5,13 @@
       clipped
       fixed
       app
-    >
+      class="sidebar"
+      width="250"
+        >
       <v-list dense >
         <v-list-tile v-for="(menu, index) in main_menus" :key="index"> 
           <v-list-tile-action>
-            <v-icon>{{menu.icon}}</v-icon>
+            <v-icon color="white darken-4">{{menu.icon}}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title >
@@ -24,26 +26,60 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title >JodiDaar</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
-                <v-menu offset-y>
-                    <template v-slot:activator="{ on }">
-                        <v-btn icon v-on="on">
-                            <v-avatar size="40" color="grey lighten-4">
-                                <img src="https://randomuser.me/api/portraits/men/85.jpg">
-                            </v-avatar>
-                        </v-btn>
-                    </template>
-                    <v-list>
-                        <v-list-tile v-for="(item, index) in header_menu" :key="index" >
-                            <v-list-tile-action>
-                                <v-icon>{{item.icon}}</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-title :to="item.link">{{ item.title }}</v-list-tile-title>
-                        </v-list-tile>
-                    </v-list>
-                </v-menu>
-            </v-toolbar-items>
-    </v-toolbar>
+      
+
+<v-toolbar-items>
+   <v-menu
+      offset-y
+      content-class="dropdown-menu"
+      transition="slide-y-transition">
+      <v-btn
+         slot="activator"
+         flat
+         color="white"
+         >
+         <v-icon left>notification_important</v-icon>
+      </v-btn>
+      <v-card>
+         <v-list dense>
+            <v-list-tile
+               v-for="notification in notifications"
+               :key="notification"
+               >
+               <v-list-tile-title
+                  v-text="notification"
+                  />
+            </v-list-tile>
+         </v-list>
+      </v-card>
+   </v-menu>
+   <v-menu
+      offset-y
+      content-class="dropdown-menu"
+      transition="slide-y-transition">
+      <template v-slot:activator="{ on }">
+         <v-btn icon v-on="on">
+            <v-avatar size="40" color="grey lighten-4">
+               <img src="https://randomuser.me/api/portraits/men/85.jpg">
+            </v-avatar>
+         </v-btn>
+      </template>
+      <v-card>
+         <v-list dense>
+            <v-list-tile
+               v-for="notification in header_menu"
+               :key="notification"
+               >
+               <v-list-tile-action><v-icon>{{notification.icon}}</v-icon></v-list-tile-action>
+               <v-list-tile-title
+                  v-text="notification.title"
+                  />
+            </v-list-tile>
+         </v-list>
+      </v-card>
+   </v-menu>
+</v-toolbar-items>
+</v-toolbar>
     </div>
 </template>
 
@@ -100,7 +136,14 @@ export default {
                     link: '/contact-us',
                     icon: 'phone'
 				},
-      ]
+      ],
+      notifications: [
+        'Mike, John responded to your email',
+        'You have 5 new tasks',
+        'You\'re now a friend with Andrew',
+        'Another Notification',
+        'Another One'
+      ] 
     }),
     props: {
       source: String
@@ -115,6 +158,16 @@ export default {
 }
 .router-link-active{
   color:navy !important;
+}
+.sidebar {
+    background-image: url('@/../../../assets/images/sidebar.jpg');
+    background-size: cover;
+    overflow:hidden;
+    background-position: 100%;
+    z-index: 2;
+    color: white;
+    height: 100%;
+    background-repeat: no-repeat !important;
 }
 </style>
 

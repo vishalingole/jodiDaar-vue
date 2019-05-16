@@ -1,0 +1,122 @@
+<template>
+  <v-app id="login" >
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center >
+          <v-flex xs12 sm8 md4 lg4>
+            <v-card class="elevation-1 pa-3">
+              <v-card-text>
+                <div class="layout column align-center">
+                  <img src="@/assets/logo.png" alt="Vue Material Admin" >
+                  <h1 class="flex my-4 ">Welcome To JodiDaar  </h1>
+                </div>
+                <v-form>
+                  <v-text-field
+                    append-icon="person"
+                    name="login"
+                    label="Login"
+                    type="text"
+                    v-model="userEmail"
+                    :error="error"
+                    :rules="[rules.required]"/>
+                  <v-text-field
+                    :type="hidePassword ? 'password' : 'text'"
+                    :append-icon="hidePassword ? 'visibility_off' : 'visibility'"
+                    name="password"
+                    label="Password"
+                    id="password"
+                    :rules="[rules.required]"
+                    v-model="password"
+                    :error="error"
+                    @click:append="hidePassword = !hidePassword"/>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn block color="primary" @click="login" :loading="loading">Login</v-btn>
+                <div class="row my-3 d-flex justify-content-center">
+              <mdb-btn type="button" color="white" rounded class="mr-md-3 z-depth-1a"><mdb-icon fab icon="facebook" class="blue-text text-center"/></mdb-btn>
+              <mdb-btn type="button" color="white" rounded class="mr-md-3 z-depth-1a"><mdb-icon fab icon="twitter" class="blue-text"/></mdb-btn>
+              <mdb-btn type="button" color="white" rounded class="z-depth-1a"><mdb-icon fab icon="google-plus" class="blue-text"/></mdb-btn>
+            </div>
+              </v-card-actions>
+            </v-card>
+            
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <v-snackbar
+        v-model="showResult"
+        :timeout="2000"
+        top>
+        {{ result }}
+      </v-snackbar>
+    </v-content>
+  </v-app>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      loading: false,
+      userEmail: 'vishal.ingole3@gmail.com',
+      password: 'test@1234',
+      hidePassword: true,
+      error: false,
+      showResult: false,
+      result: '',
+      rules: {
+        required: value => !!value || 'Required.'
+      }
+    }
+  },
+
+  methods: {
+    login() {
+      const vm = this;
+
+      if (!vm.userEmail || !vm.password) {
+
+        vm.result = "Email and Password can't be null.";
+        vm.showResult = true;
+
+        return;
+      }
+
+      var params = {
+        email: vm.userEmail,
+        password: vm.password,
+      }
+      vm.$router.push({ name: 'Dashboard' });
+      //  vm.axios.post('http://192.168.2.33:8080/api/v1/users/login', params).then((response) => {
+      //    console.log(response.data);
+      //       console.log('Everything is awesome.');
+      //      vm.$router.push({ name: 'Dashboard' });
+
+      //   }).catch((error) => {
+      //       console.warn('Not good man :(');
+      //       vm.error = true;
+      //       vm.result = "Email or Password is incorrect.";
+      //       vm.showResult = true;
+      //   })
+    }
+  }
+}
+</script>
+
+<style scoped lang="css">
+  #login {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    z-index: 0;
+    background-image: url('@/../../../assets/images/background.jpg');
+    background-size: cover;
+    overflow:hidden;
+  }
+ 
+
+</style>

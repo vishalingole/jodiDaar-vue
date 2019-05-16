@@ -14,5 +14,10 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  data: {
+    themeColor: 'green darken-4',
+    userEmail: 'ashish1.sarode12@infobeans.com',
+    userPassword: 'ashish123'
+  }
 })
