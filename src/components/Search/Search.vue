@@ -4,8 +4,8 @@
    <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
            <v-flex xs12>
-              <v-toolbar color="purple" >
-                <h3>Search From Groom & Bride</h3>
+              <v-toolbar color="purple darken-2" >
+                <h3 class="white--text">Search From Groom & Bride</h3>
                 <v-spacer></v-spacer>
                 <v-icon large color="white darken-2">search</v-icon>
                </v-toolbar>
@@ -31,7 +31,7 @@
                      <v-expand-transition>
                         <div
                            v-if="hover"
-                           class="d-flex transition-fast-in-fast-out v-card--reveal display-2 white--text"
+                           class="d-flex transition-fast-in-fast-out v-card--reveal display-2 white--text darken-2"
                            style="height: 100%;font-size:18px !important"
                            >
                            {{card.title}}
@@ -44,7 +44,7 @@
                      >
                      <v-btn
                         absolute
-                        color="purple"
+                       :color="$root.themeColor"
                         class="white--text"
                         fab
                         large
@@ -76,7 +76,7 @@
   export default {
     data: () => ({
       cards: [
-        { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', dob: '28/01/1990', location : 'pune', education : 'Master of computer Application', job : 'Software Engineer', icon : 'work' },
+        { title: 'Priya', src: require('../../assets/images/wedding.jpg'), dob: '28/01/1990', location : 'pune', education : 'Master of computer Application', job : 'Software Engineer', icon : 'work' },
         { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', dob: '28/01/1990', location : 'pune', education : 'Master of computer Application', job : 'Software Engineer', icon : 'work' },
         { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', dob: '28/01/1990', location : 'Mumbai', education : 'Master of computer Application', job : 'Software Engineer' , icon : 'work' },
         { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', dob: '28/01/1990', location : 'Nagpur', education : 'Master of computer Application', job : 'Software Engineer' , icon : 'work' },
@@ -94,7 +94,7 @@
   align-items: top;
   bottom: 0;
   justify-content: center;
-  opacity: 2;
+  opacity:2;
   position: absolute;
   width: 100%;
 }

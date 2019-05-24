@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import {setupComponents} from './config/setup-components'
+
 
 Vue.use(Vuetify)
+setupComponents(Vue)
 
 Vue.config.productionTip = false
 
@@ -16,7 +19,7 @@ new Vue({
   components: { App },
   template: '<App/>',
   data: {
-    themeColor: 'green darken-4',
+    themeColor: 'purple darken-2',
     userEmail: 'ashish1.sarode12@infobeans.com',
     userPassword: 'ashish123'
   }

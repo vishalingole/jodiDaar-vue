@@ -2,8 +2,8 @@
    <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
            <v-flex xs12>
-              <v-toolbar color="purple" >
-                <h3>Success Stories</h3>
+              <v-toolbar :color="$root.themeColor" >
+                <h3 class="white--text">Success Stories</h3>
                 <v-spacer></v-spacer>
                 <v-icon large color="white darken-2">history</v-icon>
                </v-toolbar>
@@ -39,7 +39,7 @@
               </v-layout>
               <v-divider light></v-divider>
               <v-card-actions class="pa-3">
-                <v-btn color="purple" @click="openModal" small>View Story</v-btn>
+                <v-btn :color="$root.themeColor" @click="openModal" small>View Story</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                     <v-icon>favorite</v-icon>
@@ -59,7 +59,7 @@
         <v-img
           class="white--text"
           height="200px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          :src="require('../../assets/images/wedding.jpg')"
         >
           <v-container fill-height fluid>
             <v-layout fill-height>
@@ -90,7 +90,7 @@
   export default {
     data: () => ({
       cards: [
-        { groom: 'Priya Ingole', bride: 'Mangesh Divate' , src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', dob: '28/01/1990', location : 'pune', education : 'Master of computer Application', job : 'Software Engineer', icon : 'work' },
+        { groom: 'Priya Ingole', bride: 'Mangesh Divate' , src: require('../../assets/images/wedding.jpg'), dob: '28/01/1990', location : 'pune', education : 'Master of computer Application', job : 'Software Engineer', icon : 'work' },
         { groom: 'Neha Bobade', bride: 'Vishal Ingole' ,src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', dob: '28/01/1990', location : 'pune', education : 'Master of computer Application', job : 'Software Engineer', icon : 'work' },
         { groom: 'Best airlines', bride: 'Vishal Ingole' , src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', dob: '28/01/1990', location : 'Mumbai', education : 'Master of computer Application', job : 'Software Engineer' , icon : 'work' },
         { groom: 'Best airlines', bride: 'Vishal Ingole' , src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', dob: '28/01/1990', location : 'Nagpur', education : 'Master of computer Application', job : 'Software Engineer' , icon : 'work' },

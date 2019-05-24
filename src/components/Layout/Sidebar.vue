@@ -22,9 +22,9 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>  
-    <v-toolbar app fixed clipped-left color="purple">
+    <v-toolbar app fixed clipped-left color="purple darken-2">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title >JodiDaar</v-toolbar-title>
+      <v-toolbar-title ><img src="@/assets/logo.jpg" alt="Vue Material Admin" width="250px" height="70px"></v-toolbar-title>
       <v-spacer></v-spacer>
       
 
@@ -37,8 +37,9 @@
          slot="activator"
          flat
          color="white"
+         icon
          >
-         <v-icon left>notification_important</v-icon>
+         <v-icon >notification_important</v-icon>
       </v-btn>
       <v-card>
          <v-list dense>
@@ -72,7 +73,7 @@
                >
                <v-list-tile-action><v-icon>{{notification.icon}}</v-icon></v-list-tile-action>
                <v-list-tile-title
-                  v-text="notification.title"
+                  v-text="notification.title" :to="notification.link"
                   />
             </v-list-tile>
          </v-list>
@@ -145,6 +146,13 @@ export default {
         'Another One'
       ] 
     }),
+    methods: {
+       logout () {
+          const vm = this;
+
+            vm.$router.push({ name: 'Login' });
+       }
+    },
     props: {
       source: String
     }

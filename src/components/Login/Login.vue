@@ -3,18 +3,18 @@
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center >
-          <v-flex xs12 sm8 md4 lg4>
+          <v-flex xs12 sm8 md4 lg5>
             <v-card class="elevation-1 pa-3">
               <v-card-text>
                 <div class="layout column align-center">
-                  <img src="@/assets/logo.png" alt="Vue Material Admin" >
-                  <h1 class="flex my-4 ">Welcome To JodiDaar  </h1>
+                  <img src="@/assets/logo.jpg" alt="Vue Material Admin" width="250px" >
+                  <h2 class="flex my-4 ">Welcome To JodiDaar  </h2>
                 </div>
                 <v-form>
                   <v-text-field
                     append-icon="person"
                     name="login"
-                    label="Login"
+                    label="Email"
                     type="text"
                     v-model="userEmail"
                     :error="error"
@@ -31,17 +31,41 @@
                     @click:append="hidePassword = !hidePassword"/>
                 </v-form>
               </v-card-text>
-              <v-card-actions>
+              <v-card-actions >
                 <v-spacer></v-spacer>
-                <v-btn block color="primary" @click="login" :loading="loading">Login</v-btn>
-                <div class="row my-3 d-flex justify-content-center">
-              <mdb-btn type="button" color="white" rounded class="mr-md-3 z-depth-1a"><mdb-icon fab icon="facebook" class="blue-text text-center"/></mdb-btn>
-              <mdb-btn type="button" color="white" rounded class="mr-md-3 z-depth-1a"><mdb-icon fab icon="twitter" class="blue-text"/></mdb-btn>
-              <mdb-btn type="button" color="white" rounded class="z-depth-1a"><mdb-icon fab icon="google-plus" class="blue-text"/></mdb-btn>
-            </div>
+                <v-btn outline color="primary" @click="login" :loading="loading" small class="text-md-center">Login</v-btn>
               </v-card-actions>
+              <v-divider></v-divider>
+              <!-- <v-layout row>
+                <v-flex xs6>
+                  <v-card-title primary-title>
+                    <GoogleLogin></GoogleLogin>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs6 align-content-end>
+                  <v-card-title primary-title class="green--text">
+                    <GoogleLogin></GoogleLogin>
+                  </v-card-title>
+                </v-flex>
+              </v-layout> -->
+               <v-layout row>
+                <v-flex xs7>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="headline red--text">Can We Help?</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs5 align-content-end>
+                  <v-card-title primary-title class="green--text">
+                    <div>
+                      <div><router-link class="green--text" to="forgot-password">Forgot My Password</router-link></div>
+                      <div><router-link class="green--text" to="register">Register New Account</router-link></div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+              </v-layout>
             </v-card>
-            
           </v-flex>
         </v-layout>
       </v-container>
@@ -117,6 +141,8 @@ export default {
     background-size: cover;
     overflow:hidden;
   }
- 
+  a {
+      text-decoration:none;
+  }
 
 </style>

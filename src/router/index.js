@@ -7,6 +7,9 @@ import Search from '@/components/Search/Search'
 import StoriesList from '@/components/Stories/StoriesList'
 import Contact from '@/components/Contact/Index'
 import Login from '@/components/Login/Login'
+import ForgotPassword from '@/components/Login/ForgotPassword'
+import Register from '@/components/Login/Register'
+
 
 Vue.use(Router)
 
@@ -42,6 +45,22 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: Login,
+      meta: {
+        allowAnonymous: true
+      }
+    },
+    {
+      path: '/forgot-password',
+      name: 'ForgotPassword',
+      component: ForgotPassword,
+      meta: {
+        allowAnonymous: true
+      }
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register,
       meta: {
         allowAnonymous: true
       }
