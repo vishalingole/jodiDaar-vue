@@ -36,7 +36,7 @@
                 <v-btn outline color="primary" @click="login" :loading="loading" small class="text-md-center">Login</v-btn>
               </v-card-actions>
               <v-divider></v-divider>
-              <!-- <v-layout row>
+               <v-layout row>
                 <v-flex xs6>
                   <v-card-title primary-title>
                     <GoogleLogin></GoogleLogin>
@@ -47,7 +47,7 @@
                     <GoogleLogin></GoogleLogin>
                   </v-card-title>
                 </v-flex>
-              </v-layout> -->
+              </v-layout>
                <v-layout row>
                 <v-flex xs7>
                   <v-card-title primary-title>

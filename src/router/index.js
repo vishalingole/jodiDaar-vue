@@ -9,6 +9,7 @@ import Contact from '@/components/Contact/Index'
 import Login from '@/components/Login/Login'
 import ForgotPassword from '@/components/Login/ForgotPassword'
 import Register from '@/components/Login/Register'
+import Profile from '@/components/Profile/Profile'
 
 
 Vue.use(Router)
@@ -63,6 +64,14 @@ export default new Router({
       component: Register,
       meta: {
         allowAnonymous: true
+      }
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
+      meta: {
+        allowAnonymous: false
       }
     }
   ]

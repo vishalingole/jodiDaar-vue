@@ -1,5 +1,5 @@
 <template>
-<div> 
+<div>
     <v-navigation-drawer
       v-model="drawer"
       clipped
@@ -9,24 +9,24 @@
       width="250"
         >
       <v-list dense >
-        <v-list-tile v-for="(menu, index) in main_menus" :key="index"> 
+        <v-list-tile v-for="(menu, index) in main_menus" :key="index">
           <v-list-tile-action>
             <v-icon color="white darken-4">{{menu.icon}}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title >
-              <router-link :to="menu.link" 
+              <router-link :to="menu.link"
               >{{menu.title}}</router-link>
               </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer>  
+    </v-navigation-drawer>
     <v-toolbar app fixed clipped-left color="purple darken-2">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title ><img src="@/assets/logo.jpg" alt="Vue Material Admin" width="250px" height="70px"></v-toolbar-title>
       <v-spacer></v-spacer>
-      
+
 
 <v-toolbar-items>
    <v-menu
@@ -73,7 +73,7 @@
                >
                <v-list-tile-action><v-icon>{{notification.icon}}</v-icon></v-list-tile-action>
                <v-list-tile-title
-                  v-text="notification.title" :to="notification.link"
+                  v-text="notification.title" v-on:click="redirect(notification.link)"
                   />
             </v-list-tile>
          </v-list>
@@ -91,6 +91,11 @@ export default {
     data: () => ({
       drawer: null,
       header_menu: [
+            {
+                    title: 'Profile',
+                    link: '/profile',
+                    icon: 'subscriptions'
+				},
 				{
                     title: 'Subscription',
                     link: '/subscription',
@@ -144,13 +149,16 @@ export default {
         'You\'re now a friend with Andrew',
         'Another Notification',
         'Another One'
-      ] 
+      ]
     }),
     methods: {
        logout () {
-          const vm = this;
-
-            vm.$router.push({ name: 'Login' });
+         const vm = this;
+         vm.$router.push({ name: 'Login' });
+       },
+       redirect (route) {
+          alert(route);
+          this.$router.push({path: route})
        }
     },
     props: {
@@ -170,12 +178,9 @@ export default {
 .sidebar {
     background-image: url('@/../../../assets/images/sidebar.jpg');
     background-size: cover;
-    overflow:hidden;
     background-position: 100%;
+    width: 100%;
     z-index: 2;
-    color: white;
-    height: 100%;
-    background-repeat: no-repeat !important;
 }
 </style>
 

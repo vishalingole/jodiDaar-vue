@@ -1,35 +1,72 @@
 <template>
-  <v-btn v-google-signin-button="clientId" class="google-signin-button"> Continue with Google</v-btn>
+  <g-signin-button
+    :params="googleSignInParams"
+    @success="onSignInSuccess"
+    @error="onSignInError">
+    Sign in with Google
+  </g-signin-button>
 </template>
 
 <script>
-// import GoogleSignInButton from 'vue-google-signin-button-directive'
 export default {
-  directives: {
-    // GoogleSignInButton
-  },
   data: () => ({
-    clientId: '923520102308-hp0omb593013p6ndmniho6mq39vb8v7o.apps.googleusercontent.com'
+    googleSignInParams: {
+        client_id: '923520102308-9as89pke02s081g0irhfmolqaqka0b1i.apps.googleusercontent.com'
+      },
   }),
   methods: {
-    OnGoogleAuthSuccess (idToken) {
-      // Receive the idToken and make your magic with the backend
+    onSignInSuccess (googleUser) {
+      // `googleUser` is the GoogleUser object that represents the just-signed-in user.
+      // See https://developers.google.com/identity/sign-in/web/reference#users
+      const profile = googleUser.getBasicProfile() // etc etc
+      console.log(googleUser.getBasicProfile());
+      console.log(googleUser.getAuthResponse());
+      this.$router.push({name : 'Dashboard'})
     },
-    OnGoogleAuthFail (error) {
-      console.log(error)
+    onSignInError (error) {
+      // `error` contains any error occurred.
+      console.log('OH NOES', error)
     }
   }
 }
 </script>
 
 <style>
-.google-signin-button {
-  color: white;
-  background-color: red;
-  height: 30px;
-  font-size: 16px;
-  border-radius: 5px;
-  padding: 10px 20px 25px 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
+.g-signin-button {
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 190px;
+      border-radius: 5px;
+      border: thin solid #888;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    .g-signin-button:hover {
+      cursor: pointer;
+    }
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+    span.icon {
+      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 42px;
+      height: 42px;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 42px;
+      padding-right: 42px;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
+
+
 </style>
